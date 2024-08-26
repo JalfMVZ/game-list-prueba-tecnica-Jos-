@@ -1,0 +1,36 @@
+<div
+  class="container my-5 d-flex justify-content-center align-items-center"
+  style="min-height: 300px"
+>
+  <div *ngIf="loading" class="text-center">
+    <p class="mb-0">Cargando, por favor espere...</p>
+  </div>
+
+  <ng-template #errorTemplate>
+    <div class="text-center alert alert-danger">
+      <p>{{ error }}</p>
+    </div>
+  </ng-template>
+
+  <div *ngIf="!loading && game; else errorTemplate" class="game-detail">
+    <h1 class="mb-4 text-center">{{ game.title }}</h1>
+    <div class="row">
+      <div class="col-md-6">
+        <img
+          [src]="game.thumbnail"
+          class="img-fluid rounded shadow-sm"
+          [alt]="game.title"
+        />
+      </div>
+      <div class="col-md-6">
+        <p class="lead mb-4">{{ game.short_description }}</p>
+        <div class="mb-3">
+          <p><strong>Género:</strong> {{ game.genre }}</p>
+          <p><strong>Plataforma:</strong> {{ game.platform }}</p>
+        </div>
+        <p>{{ game.description }}</p>
+        <a routerLink="/" class="btn btn-primary mt-4">Volver a la lista</a>
+      </div>
+    </div>
+  </div>
+</div>

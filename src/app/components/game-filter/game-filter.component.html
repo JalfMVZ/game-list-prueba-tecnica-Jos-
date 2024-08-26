@@ -1,0 +1,19 @@
+<div class="container my-4">
+  <form class="form-inline">
+    <div class="form-group mb-2 mr-3">
+      <input type="text" #nameInput class="form-control" placeholder="Buscar por nombre" (input)="onFilterChange(nameInput.value, genre.value, platform.value)">
+    </div>
+    <div class="form-group mb-2 mr-3">
+      <select #genre class="form-control" (change)="onFilterChange(nameInput.value, genre.value, platform.value)">
+        <option value="">Selecciona género</option>
+        <option *ngFor="let g of genres" [value]="g">{{ g }}</option>
+      </select>
+    </div>
+    <div class="form-group mb-2">
+      <select #platform class="form-control" (change)="onFilterChange(nameInput.value, genre.value, platform.value)">
+        <option value="">Selecciona plataforma</option>
+        <option *ngFor="let p of platforms" [value]="p">{{ p }}</option>
+      </select>
+    </div>
+  </form>
+</div>
